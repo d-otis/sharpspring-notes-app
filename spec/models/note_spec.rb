@@ -39,4 +39,13 @@ RSpec.describe Note, type: :model do
     end
 
   end
+
+  context "associations" do
+
+    it "is owned by a user" do
+      note = user.notes.create()
+      expect(note.user_id).to eq(user.id)
+    end
+
+  end
 end
