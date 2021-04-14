@@ -14,7 +14,7 @@ RSpec.describe Category, type: :model do
   end
 
   context "validations" do
-    let(:long_name) { valid_attrs.merge(:title => "012345678901234567890123456789x") }
+    let(:long_name) { valid_attrs.merge(:name => "012345678901234567890123456789x") }
 
     it "valid with valid attributes" do
       expect(Category.new(valid_attrs)).to be_valid
