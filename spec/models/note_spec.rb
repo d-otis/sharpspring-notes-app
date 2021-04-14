@@ -53,6 +53,7 @@ RSpec.describe Note, type: :model do
   context "validations" do
 
     let(:long_title) { valid_attrs.merge(:title => "012345678901234567890123456789x") }
+    let(:long_body) { valid_attrs.merge(:body => "Maecenas faucibus mollis interdum. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla.    Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus.") }
     let(:missing_title) { valid_attrs.except(:title) }
     let(:blank_body) { valid_attrs.merge(:body => "") }
     let(:missing_title_and_body) { valid_attrs.except(:title, :body) }
@@ -72,6 +73,10 @@ RSpec.describe Note, type: :model do
     
     it "cannot have missing title and missing body" do
       expect(Note.new(missing_title_and_body)).to be_invalid
+    end
+
+    it "body cannot be more than 1000 characters" do
+      expect(Note.new(long_body)).to be_invalid
     end
 
   end
