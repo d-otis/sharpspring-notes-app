@@ -58,6 +58,10 @@ RSpec.describe Note, type: :model do
     let(:blank_body) { valid_attrs.merge(:body => "") }
     let(:missing_title_and_body) { valid_attrs.except(:title, :body) }
 
+    it "note is valid with valid attributes" do
+      expect(Note.new(valid_attrs)).to be_valid
+    end 
+
     it "title cannot be more than 30 characters" do
       expect(Note.new(long_title)).to be_invalid
     end
