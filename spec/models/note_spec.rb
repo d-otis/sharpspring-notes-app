@@ -12,6 +12,14 @@ RSpec.describe Note, type: :model do
     )
   }
 
+  let(:work_category) {
+    Category.create(name: "Work")
+  }
+
+  let(:personal_category) {
+    Category.create(name: "Personal")
+  }
+
   let(:valid_attrs) do
     {
       title: "First Note",
@@ -20,6 +28,10 @@ RSpec.describe Note, type: :model do
       user: user
     }
   end
+
+  let(:valid_note) {
+    Note.create(valid_attrs)
+  }
 
   context "attributes" do
 
@@ -42,10 +54,15 @@ RSpec.describe Note, type: :model do
   end
 
   context "associations" do
-
     it "is owned by a user" do
       note = user.notes.create(valid_attrs)
       expect(note.user_id).to eq(user.id)
+    end
+
+    it "can have many categories" do
+      valid_note.categories << work_category
+      valid_note.categories << personal_category
+      expect(valid_note.categories.length).to eq(2)
     end
 
   end
@@ -86,6 +103,11 @@ RSpec.describe Note, type: :model do
 
     it "pinned defaults to false" do
       expect(Note.new(missing_pinned).pinned).to eq(false)
+    end
+
+    it "can only add the same category once" do
+      valid_nc_join = NoteCategory.create!(note: valid_note, category: work_category)
+      expect{NoteCategory.create!(note: valid_note, category: work_category)}.to raise_error(ActiveRecord::RecordInvalid)
     end
 
   end
