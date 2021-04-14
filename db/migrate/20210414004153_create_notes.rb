@@ -4,7 +4,7 @@ class CreateNotes < ActiveRecord::Migration[6.0]
       t.string :title
       t.text :body
       t.uuid :user_id
-      t.boolean :pinned
+      t.boolean :pinned, :default => false
 
       t.timestamps
     end
