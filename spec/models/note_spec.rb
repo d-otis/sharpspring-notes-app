@@ -49,4 +49,30 @@ RSpec.describe Note, type: :model do
     end
 
   end
+
+  context "validations" do
+
+    let(:long_title) { valid_attrs.merge(:title => "012345678901234567890123456789x") }
+    let(:missing_title) { valid_attrs.except(:title) }
+    let(:blank_body) { valid_attrs.merge(:body => "") }
+    let(:missing_title_and_body) { valid_attrs.except(:title, :body) }
+
+    it "title cannot be more than 30 characters" do
+      expect(Note.new(long_title)).to be_invalid
+    end
+
+    it "body can be blank" do
+      expect(Note.new(blank_body)).to be_valid
+    end
+
+    it "when title left blank: title defaults to first 30 chars of body " do
+      note = Note.create(missing_title)
+      expect(note.title).to eq("Etiam porta sem malesuada magn")
+    end
+    
+    it "cannot have missing title and missing body" do
+      expect(Note.new(missing_title_and_body)).to be_invalid
+    end
+
+  end
 end
