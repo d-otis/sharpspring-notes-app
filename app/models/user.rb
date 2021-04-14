@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :notes, inverse_of: :user
+
   has_secure_password
 
   validates :email, presence: true, uniqueness: true
