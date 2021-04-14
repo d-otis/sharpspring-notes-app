@@ -57,6 +57,7 @@ RSpec.describe Note, type: :model do
     let(:missing_title) { valid_attrs.except(:title) }
     let(:blank_body) { valid_attrs.merge(:body => "") }
     let(:missing_title_and_body) { valid_attrs.except(:title, :body) }
+    let(:missing_pinned) { valid_attrs.except(:pinned) }
 
     it "note is valid with valid attributes" do
       expect(Note.new(valid_attrs)).to be_valid
@@ -81,6 +82,10 @@ RSpec.describe Note, type: :model do
 
     it "body cannot be more than 1000 characters" do
       expect(Note.new(long_body)).to be_invalid
+    end
+
+    it "pinned defaults to false" do
+      expect(Note.new(missing_pinned).pinned).to eq(false)
     end
 
   end
