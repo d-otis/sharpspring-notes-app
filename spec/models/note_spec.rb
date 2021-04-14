@@ -16,7 +16,8 @@ RSpec.describe Note, type: :model do
     {
       title: "First Note",
       body: "Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-      pinned: true
+      pinned: true,
+      user: user
     }
   end
 
