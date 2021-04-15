@@ -9,4 +9,8 @@ class User < ApplicationRecord
 
   validates :password, presence: true, confirmation: true
   validates :password_confirmation, presence: true
+
+  def full_name
+    [ first_name, last_name ].join(" ") 
+  end
 end
