@@ -79,4 +79,18 @@ RSpec.describe User, type: :model do
     end
 
   end
+
+  context "associations" do
+    it "can create note from built-in methods" do
+      user = create(:user)
+      note = user.notes.create(attributes_for(:note))
+      expect(note).to be_valid
+    end
+
+    it "can create categories from user-created note" do
+      user = create(:user)
+      category = user.notes.create(attributes_for(:note)).categories.create(name: "Test Category")
+      expect(category).to be_valid
+    end
+  end
 end
