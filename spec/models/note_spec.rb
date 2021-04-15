@@ -59,10 +59,20 @@ RSpec.describe Note, type: :model do
       expect(note.user_id).to eq(user.id)
     end
 
+    it "can have one category" do 
+      valid_note.update(categories: [work_category])
+      expect(valid_note.category_ids).to include(work_category.id) 
+    end
+
     it "can have many categories" do
       valid_note.categories << work_category
       valid_note.categories << personal_category
       expect(valid_note.categories.length).to eq(2)
+    end
+
+    it "can create categories via built-in methods" do
+      category = valid_note.categories.create(name: "test category")
+      expect(category).to be_valid
     end
 
   end
