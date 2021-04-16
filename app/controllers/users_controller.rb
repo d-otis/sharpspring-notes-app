@@ -17,13 +17,13 @@ class UsersController < ApplicationController
   end
   
   def show
+    @notes = @user.notes
   end
 
   def edit
   end
 
   def update
-    
   end
 
   private
