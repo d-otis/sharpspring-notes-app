@@ -46,6 +46,11 @@ RSpec.describe "Users", type: :request do
       expect(response.body).to include("Create a New User")
     end
 
+    it "includes a form" do
+      get new_user_path
+      expect(response.body).to include("</form>")
+    end
+
   end
 
   context "GET /users/:id/edit" do
