@@ -1,0 +1,6 @@
+<% if logged_in? %>
+  <%= link_to "Home", user_path(current_user) %>
+  <%= link_to "Notes", notes_path %>
+  <%= link_to "Categories", "/categories"  %>
+<% end %>
+<br>
