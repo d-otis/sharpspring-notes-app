@@ -1,5 +1,11 @@
 <ul>
   <% notes.each do |note| %>
-    <li><%= link_to note.title, user_note_path(note) %>  </li>
+    <li 
+      id="<%= note.id %>"> 
+      <%= link_to note.title, note_path(note) %> 
+      &mdash; 
+      <%= edit(note) %> 
+      <%= pin(note) %> 
+    </li>
   <% end %>
 </ul>
