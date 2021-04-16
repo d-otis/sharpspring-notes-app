@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
-  context "GET /user" do
+  context "GET /user/:id" do
     let(:fake_user) { create(:user) }
 
     it "returns a 200 status" do
