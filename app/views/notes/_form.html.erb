@@ -1,0 +1,16 @@
+<%= form_with model: @note do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+
+  <br>
+
+  <%= form.label :body %>
+  <%= form.text_area :body %>
+  <br>
+  <%= form.label :pinned, "Pin Note" %>
+  <%= form.check_box :pinned %>
+  <br>
+  <%= form.collection_select :user_id, @users, :id, :full_name %>
+  <br>
+  <%= form.submit %>
+<% end %>
