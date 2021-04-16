@@ -31,6 +31,11 @@ RSpec.describe "Users", type: :request do
       expect(response).to have_http_status(:success)
     end
 
+    it "successfully routes '/register' to users#new" do
+      get "/register"
+      expect(response).to render_template(:new)
+    end
+
     it "renders new template" do
       get new_user_path
       expect(response).to render_template(:new)
