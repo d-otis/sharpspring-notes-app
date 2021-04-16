@@ -74,9 +74,14 @@ RSpec.describe "Users", type: :request do
   end
 
   context "POST /users" do
-    it "returns a status of 200" do
-      post users_path
+    it "returns a status of CREATED" do
+      post users_path(attributes_for(:user))
       expect(response).to have_http_status(:created)
+    end
+
+    it "adds new user to database" do
+      post users_path(fake_user)
+      expect(assigns(:user)).to be_a_new(User)
     end
   end
 
