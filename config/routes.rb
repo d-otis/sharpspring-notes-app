@@ -3,5 +3,8 @@ Rails.application.routes.draw do
 
   get "/register", to: 'users#new'
 
-  resources :users, except: :index
+  resources :users, except: :index do
+    resources :notes, except: :put
+  end
+
 end
