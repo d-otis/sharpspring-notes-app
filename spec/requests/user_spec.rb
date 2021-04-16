@@ -18,6 +18,11 @@ RSpec.describe "Users", type: :request do
       get user_path(fake_user)
       expect(response.body).to include("Welcome, #{fake_user.full_name}!")
     end
+
+    it "renders email address on user show" do
+      get user_path(fake_user)
+      expect(response.body).to include(fake_user.email)
+    end
   end
 
   context "GET /users/new" do
