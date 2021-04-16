@@ -1,0 +1,12 @@
+<h1> Welcome, <%= @user.full_name %>! </h1>
+<small>user # <%= @user.id %></small>
+ <br>
+ <%= link_to "Create New Note", new_note_path  %>
+
+<h2>You have <%= "#{@user.notes.count} note#{@user.notes.count != 1 ? 's' : ''}"  %> </h2>
+
+<% if flash.any? %>
+  has messages
+<% end %>
+
+<%= render partial: 'notes/notes_list', locals: { notes: @notes } %>
