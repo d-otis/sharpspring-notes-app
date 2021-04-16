@@ -1,5 +1,4 @@
-<ul>
-  <% notes.each do |note| %>
-    <li><%= link_to note.title, user_note_path(note) %>  </li>
-  <% end %>
-</ul>
+<h1>Notes Index</h1>
+<%= link_to "Create a Note", new_note_path %>
+<br>
+<%= render(@notes) || "No notes yet!" %>
