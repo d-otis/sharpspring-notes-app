@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  before_action :set_note, except: [:index, :new]
 
   def index
   end
@@ -30,6 +31,10 @@ class NotesController < ApplicationController
 
   def note_params
     params.require(:note).permit(:title, :body, :pinned, :user_id)
+  end
+
+  def set_note
+    @note = Note.find_by(id: params[:id])
   end
 
 end
