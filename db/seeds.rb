@@ -47,5 +47,11 @@ Note.create([
     title: "Ideas for Essays",
     body: "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Cras mattis consectetur purus sit amet fermentum.",
     user: tammy
-  }]
+  },
+  {
+    title: "Easy A",
+    body: "estibulum id ligula porta felis euismod semper. ",
+    user: tammy
+  }
+]
 )
