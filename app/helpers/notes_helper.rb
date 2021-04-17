@@ -4,7 +4,7 @@ module NotesHelper
   end
 
   def delete(note)
-    "[delete]"
+    button_to("[delete]", note, method: :delete)
   end
 
   def pin(note)
