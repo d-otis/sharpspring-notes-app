@@ -27,6 +27,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    if current_user.update(user_params)
+      redirect_to user_path(current_user), notice: ["You've updated your info"]
+    else
+      flash[:notice] = current_user.errors.full_messages
+      redirect_to edit_user_path(current_user)
+    end
   end
 
   private
