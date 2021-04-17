@@ -20,4 +20,8 @@ module NotesHelper
   def note_meta(note)
     "(Created by #{note.user.full_name} #{date(note)})"
   end
+  
+  def view(note)
+    link_to "view" ,note_path(note), :class => 'btn btn-primary'
+  end
 end
