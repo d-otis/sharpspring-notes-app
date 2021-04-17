@@ -1,7 +1,8 @@
     <li 
       id="<%= note.id %>"> 
-      <%= link_to note.title, note_path(note) %> 
+      <%= link_to note.title, note_path(note) %> <%= note_meta(note) %>
       &mdash; 
       <%= edit(note) %> 
       <%= pin(note) %> 
+      <%= delete(note) %>
     </li>
