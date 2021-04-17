@@ -13,9 +13,8 @@
   </div>
 </div>
 
- <%= link_to "[Create New Note]", new_note_path  %>
 
-<h2>You have <%= pluralize(@user.notes.count, "note") %> </h2>
+ <%= link_to "Create New Note", new_note_path, :class => 'btn btn-success'  %>
 
 <%= render(partial: 'notes/note', collection: @user.notes) || "No notes yet!" %>
 
