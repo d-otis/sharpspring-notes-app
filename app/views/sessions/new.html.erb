@@ -1,10 +1,20 @@
-<%= form_tag "/login" do %>
-  <%= label_tag :user_email, "Email" %>
-  <%= email_field :user, :email %>
 
-  <br>
-  <%= label_tag :user_password, "Password" %>
-  <%= password_field :user, :password %>
-  <br>
-  <%= submit_tag "Login" %>
-<%- end %>
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    <div class="card shadow-sm">
+      <h5 class="card-header">Login</h5>
+      <div class="card-body">
+        <%= form_tag "/login" do %>
+          <%= label_tag :user_email, "Email", :class => "form-label" %>
+          <%= email_field :user, :email, :class => "form-control" %>
+
+          <br>
+          <%= label_tag :user_password, "Password", :class => "form-label" %>
+          <%= password_field :user, :password, :class => "form-control" %>
+          <br>
+          <%= submit_tag "Login", :class => "btn btn-secondary" %>
+        <%- end %>
+      </div>
+    </div>
+  </div>
+</div>
