@@ -1,12 +1,9 @@
 class NotesController < ApplicationController
   before_action :set_note, except: [:index, :new]
+  before_action :require_login
 
   def index
-    if logged_in?
-      @notes = Note.where(user: current_user).order(:pinned => :desc)
-    else
-      redirect_to "/login", message: "Please login or register to see your notes!"
-    end
+    @notes = Note.where(user: current_user).order(:pinned => :desc)
   end
 
   def show
