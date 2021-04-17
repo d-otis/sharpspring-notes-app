@@ -1,10 +1,31 @@
-<%= link_to "Home", root_path %>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div class="container-fluid">
+    <%= link_to "NotesApp", root_path, :class => 'navbar-brand' %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <% if logged_in? %>
+        <li class="nav-item">
+          <%= link_to "Notes", notes_path,:class => "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Logout", "/logout", :class => "nav-link" %>
+        </li>
 
-<% if logged_in? %>
-  <%= link_to "Notes", notes_path %>
-  <%= link_to "Categories", "/categories"  %>
-  <%= link_to "Logout", "/logout" %>
-<% else %>
-  <%= link_to "Sign up", new_user_path %>
-<% end %>
-<br>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", "/login", :class => "nav-link" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Signup", "/users/new", :class => "nav-link" %>
+          </li>
+
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+</nav>
