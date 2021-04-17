@@ -16,6 +16,17 @@
 
  <%= link_to "Create New Note", new_note_path, :class => 'btn btn-success'  %>
 
-<%= render(partial: 'notes/note', collection: @user.notes) || "No notes yet!" %>
-
-<%= console %>
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Meta</th>
+          <th scope="col">View</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render(partial: 'notes/note', collection: @user.notes) || "No notes yet!" %>
+      </tbody>
+    </table>
