@@ -1,16 +1,16 @@
 <%= form_with model: @note do |form| %>
-  <%= form.label :title %>
-  <%= form.text_field :title %>
+  <%= form.label :title, :class => "form-label" %>
+  <%= form.text_field :title, :class => 'form-control' %>
 
-  <br>
+  <%= form.label :body, :class => "form-label" %>
+  <%= form.text_area :body, :class => 'form-control' %>
 
-  <%= form.label :body %>
-  <%= form.text_area :body %>
-  <br>
-  <%= form.label :pinned, "Pin Note" %>
-  <%= form.check_box :pinned %>
-  <br>
+  <div class="form-check">
+    <%= form.label :pinned, "Pin Note", :class => "form-check-label" %>
+    <%= form.check_box :pinned, :class => 'form-check-input' %>
+  </div>
+
   <%= form.hidden_field :user_id, :value => current_user.id %>
-  <br>
-  <%= form.submit %>
+
+  <%= form.submit :class=> 'btn btn-secondary' %>
 <% end %>
