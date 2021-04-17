@@ -13,7 +13,7 @@ class NotesController < ApplicationController
   end
 
   def new
-    
+    @note = Note.new
   end
 
   def create
@@ -31,7 +31,14 @@ class NotesController < ApplicationController
   end
 
   def update
-    binding.pry
+    @note = Note.find_by(id: params[:id])
+
+    if @note.update(note_params)
+      flash[:message] = "Note successfully updated!"
+      redirect_to note_path(@note)
+    else
+      render :edit, message: "There was an error updating your note."
+    end
   end
 
   def destroy
