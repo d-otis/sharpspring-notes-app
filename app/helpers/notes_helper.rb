@@ -1,4 +1,4 @@
-module NoteHelper
+module NotesHelper
   def edit(note)
     link_to("[edit]", edit_note_path(note))
   end
