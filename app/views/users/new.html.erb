@@ -1,10 +1,12 @@
-<h1>Create a New User</h1>
-<h2>Action: <%= @action %></h2>
-
 <%= render "shared/notices" %>
 
-<%= "flash hash is blank" if flash.blank? %>
-
-<%= render 'form' %>
-
-<%# console %>
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    <div class="card">
+      <h5 class="card-header">Create a New User</h5>
+      <div class="card-body">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+</div>
