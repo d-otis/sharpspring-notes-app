@@ -7,8 +7,6 @@
 
 <h2>You have <%= pluralize(@user.notes.count, "note") %> </h2>
 
-<% if flash.any? %>
-  has messages
-<% end %>
-
 <%= render(partial: 'notes/note', collection: @user.notes) || "No notes yet!" %>
+
+<%= console %>
