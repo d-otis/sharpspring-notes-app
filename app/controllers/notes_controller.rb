@@ -3,7 +3,7 @@ class NotesController < ApplicationController
 
   def index
     if logged_in?
-      @notes = Note.where(user: current_user)
+      @notes = Note.where(user: current_user).order(:pinned => :desc)
     else
       redirect_to "/login", message: "Please login or register to see your notes!"
     end
