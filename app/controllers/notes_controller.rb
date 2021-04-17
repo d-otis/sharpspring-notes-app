@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   before_action :set_note, except: [:index, :new]
   before_action :require_login
+  before_action :require_auth, except: [:new, :create, :index]
 
   def index
     @notes = Note.where(user: current_user).order(:pinned => :desc)
@@ -50,6 +51,10 @@ class NotesController < ApplicationController
 
   def set_note
     @note = Note.find_by(id: params[:id])
+  end
+
+  def require_auth
+    redirect_to user_path(current_user), message: "You do not own this note." unless @note.user == current_user
   end
 
 end
