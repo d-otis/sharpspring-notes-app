@@ -1,10 +1,11 @@
-Notes Show!
-
-<h1><%= @note.title %></h1>
+<h1>Notes Show</h1>
+<%= flash[:message] if flash.any? %>
+<h2><%= @note.title %> - <%= note_meta(@note) %></h2>
 
 <p>
   <%= @note.body %>
 </p>
 
 <%= link_to "Edit Note", edit_note_path(@note) %>
+<%= delete(@note) %>
 
