@@ -17,7 +17,7 @@ module NotesHelper
     note.created_at.strftime('%A, %b %e, %Y @ %I:%M%p')
   end
 
-  def note_meta
-    "Create by #{@note.user.full_name} #{date}"
+  def note_meta(note)
+    "(Created by #{note.user.full_name} #{date(note)})"
   end
 end
