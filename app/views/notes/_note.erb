@@ -1,8 +1,8 @@
-    <li 
-      id="<%= note.id %>"> 
-      <%= link_to note.title, note_path(note) %> <%= note_meta(note) %>
-      &mdash; 
-      <%= edit(note) %> 
-      <%= pin(note) %> 
-      <%= delete(note) %>
-    </li>
+
+<tr class=<%= "table-warning" if note.pinned? %>>
+  <td><%= note.title %></td>
+  <td><%= note_meta(note) %></td>
+  <td><%= view(note) %></td>
+  <td><%= edit(note) %></td>
+  <td><%= delete(note) %></td>
+</tr>
