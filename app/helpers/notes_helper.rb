@@ -10,11 +10,11 @@ module NotesHelper
   def pin(note)
     btn_text = note.pinned? ? "[unpin]" : "[pin]"
 
-    button_to btn_text, @user, method: :patch
+    button_to btn_text, note, method: :patch
   end
 
-  def date
-    @note.created_at.strftime('%A, %b %e, %Y @ %I:%M%p')
+  def date(note)
+    note.created_at.strftime('%A, %b %e, %Y @ %I:%M%p')
   end
 
   def note_meta
