@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      login_user(@user)
       redirect_to user_path(@user), notice: "You have created a new account!"
     else
       flash[:notice] = @user.errors.full_messages
