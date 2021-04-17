@@ -12,4 +12,12 @@ module NotesHelper
 
     button_to btn_text, @user, method: :patch
   end
+
+  def date
+    @note.created_at.strftime('%A, %b %e, %Y @ %I:%M%p')
+  end
+
+  def note_meta
+    "Create by #{@note.user.full_name} #{date}"
+  end
 end
