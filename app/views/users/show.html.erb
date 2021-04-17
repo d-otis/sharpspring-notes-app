@@ -1,9 +1,9 @@
 <%= render 'shared/notices' %>
 
 <h1> Welcome, <%= @user.full_name %>! </h1>
-<small>user # <%= @user.id %></small>
- <br>
- <%= link_to "Create New Note", new_note_path  %>
+<%= link_to "[edit profile]", edit_user_path(@user) %>
+
+ <%= link_to "[Create New Note]", new_note_path  %>
 
 <h2>You have <%= pluralize(@user.notes.count, "note") %> </h2>
 
