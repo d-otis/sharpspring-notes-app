@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
   def login_user(user)
     session[:user_id] = user.id
   end
+
+  def require_login
+    redirect_to("/login", message: "Please login or register to see your notes!") unless logged_in?
+  end
 end
