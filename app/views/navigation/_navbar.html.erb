@@ -7,9 +7,11 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <% if logged_in? %>
-        <li class="nav-item">
-          <%= link_to "Notes", notes_path,:class => "nav-link" %>
-        </li>
+
+        <%= content_tag :li, :class => "nav-item" do -%>
+          <%= link_to "Dashboard" , root_path, :class => "nav-link" %>
+        <% end-%>
+
         <li class="nav-item">
           <%= link_to "Logout", "/logout", :class => "nav-link" %>
         </li>
