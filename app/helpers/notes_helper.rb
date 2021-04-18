@@ -1,10 +1,10 @@
 module NotesHelper
   def edit(note)
-    link_to("edit", edit_note_path(note), :class => 'btn btn-secondary')
+    link_to("edit", edit_note_path(note), :class => 'btn btn-outline-secondary')
   end
 
   def delete(note)
-    button_to("delete", note, method: :delete, :class => 'btn btn-danger')
+    button_to("delete", note, method: :delete, :class => 'btn btn-outline-danger')
   end
 
   def pin(note)
