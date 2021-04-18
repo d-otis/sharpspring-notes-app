@@ -1,16 +1,35 @@
-<%= form_with model: @note do |form| %>
-  <%= form.label :title, :class => "form-label" %>
-  <%= form.text_field :title, :class => 'form-control' %>
+<%= render 'shared/notices' %>
+<div class="row">
+  <div class="col-sm-8 offset-sm-2">
+    <div class="card">
+      <div class="card-header">
+        <%= "#{action_name.capitalize} Note" %>
+      </div>
+      <div class="card-body">
+        <%= form_with model: @note do |form| %>
 
-  <%= form.label :body, :class => "form-label" %>
-  <%= form.text_area :body, :class => 'form-control' %>
+          <div class="mb-3">
+            <%= form.label :title, :class => "form-label" %>
+            <%= form.text_field :title, :class => 'form-control' %>
+          </div>
 
-  <div class="form-check">
-    <%= form.label :pinned, "Pin Note", :class => "form-check-label" %>
-    <%= form.check_box :pinned, :class => 'form-check-input' %>
+          <div class="mb-3">
+            <%= form.label :body, :class => "form-label" %>
+            <%= form.text_area :body, :class => 'form-control' %>
+          </div>
+
+          <div class="mb-3">
+            <div class="form-check">
+              <%= form.label :pinned, "Pin Note", :class => "form-check-label" %>
+              <%= form.check_box :pinned, :class => 'form-check-input' %>
+            </div>
+          </div>
+
+          <%= form.hidden_field :user_id, :value => current_user.id %>
+
+          <%= form.submit :class=> 'btn btn-secondary' %>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <%= form.hidden_field :user_id, :value => current_user.id %>
-
-  <%= form.submit :class=> 'btn btn-secondary' %>
-<% end %>
+</div>
