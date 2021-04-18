@@ -32,7 +32,7 @@ class NotesController < ApplicationController
     @note = Note.find_by(id: params[:id])
 
     if @note.update(note_params)
-      flash[:message] = "Note successfully updated!"
+      flash[:message] = ["Note successfully updated!"]
       redirect_to note_path(@note)
     else
       render :edit, message: "There was an error updating your note."
