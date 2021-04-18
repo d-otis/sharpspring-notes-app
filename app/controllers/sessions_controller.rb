@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    redirect_to user_path(current_user) if logged_in?
+    redirect_to '/dashboard' if logged_in?
   end
 
   def create
@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(user_params[:password])
       login_user(@user)
 
-      redirect_to user_path(@user)
+      redirect_to "/dashboard"
     else
       flash[:notice] = "Error logging in" if @user.nil?
       render :new

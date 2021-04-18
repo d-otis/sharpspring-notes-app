@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
 
+  get "/dashboard", to: "users#show"
+
   resources :users, except: :index
   resources :notes, except: :put
 
