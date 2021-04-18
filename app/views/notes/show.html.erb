@@ -1,13 +1,14 @@
-<h1>Notes Show</h1>
-<%= flash[:message] if flash.any? %>
-<h2><%= @note.title %> - <%= note_meta(@note) %></h2>
+<%= render 'shared/notices' %>
 
-<p>
-  <%= @note.body %>
-</p>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= pin_icon(@note) %>&nbsp;<%= @note.title %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= note_meta(@note) %></h6>
+    <p class="card-text"><%= @note.body %></p>
+    <div class="d-flex">
+      <%= edit(@note) %>
+      <%= delete(@note) %>
+    </div>
 
-<p><small><%= "pinned" if @note.pinned? %></small></p>
-
-<%= link_to "Edit Note", edit_note_path(@note) %>
-<%= delete(@note) %>
-
+  </div>
+</div>
