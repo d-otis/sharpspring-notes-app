@@ -1,6 +1,8 @@
 <% if flash.any? %>
-  <h3>Messages</h3>
-  <% flash[:notice].each do |msg| %>
-    <li><%= msg %></li>
+  <% flash[:message].each do |msg| %>
+    <div class="alert alert-warning" role="alert">
+      <%= msg %>
+    </div>
   <% end %>
 <% end %>
+
