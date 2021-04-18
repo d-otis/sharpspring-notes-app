@@ -22,6 +22,10 @@ module NotesHelper
   end
   
   def view(note)
-    link_to "view" ,note_path(note), :class => 'btn btn-primary'
+    link_to "view" ,note_path(note), :class => 'btn btn-outline-primary'
+  end
+
+  def pin_icon(note)
+    content_tag :i, nil, :class => "fas fa-thumbtack" if note.pinned?
   end
 end
