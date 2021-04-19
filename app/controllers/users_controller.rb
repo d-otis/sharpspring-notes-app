@@ -19,8 +19,10 @@ class UsersController < ApplicationController
   end
   
   def show
+    if logged_in?
+      @notes = current_user.notes.order(:pinned => :desc)
+    end
     redirect_to "/login" unless logged_in?
-    @notes = current_user.notes.order(:pinned => :desc)
   end
 
   def edit
