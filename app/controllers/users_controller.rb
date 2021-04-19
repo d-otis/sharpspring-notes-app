@@ -13,7 +13,8 @@ class UsersController < ApplicationController
       login_user(@user)
       redirect_to user_path(@user), notice: "You have created a new account!"
     else
-      redirect_to new_user_path, notice: @user.errors.full_messages
+      flash[:message] = @user.errors.full_messages
+      redirect_to new_user_path
     end
   end
   
