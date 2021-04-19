@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   
   def show
     if logged_in?
-      @notes = current_user.notes.order(:pinned => :desc)
+      @notes = Note.where(user: current_user).order(:pinned => :desc)
     end
     redirect_to "/login" unless logged_in?
   end
