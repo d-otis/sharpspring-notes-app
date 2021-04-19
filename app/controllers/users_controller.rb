@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   
   def show
     redirect_to "/login" unless logged_in?
-    @notes = @user.notes
+    @notes = current_user.notes.order(:pinned => :desc)
   end
 
   def edit
