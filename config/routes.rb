@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   get "/dashboard", to: "users#show"
 
   resources :users, except: :index
-  resources :notes, except: :put
+  resources :notes, except: :put do
+    member do
+      patch :toggle_pinned
+    end
+  end
 
 end
