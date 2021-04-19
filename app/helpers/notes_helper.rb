@@ -10,7 +10,7 @@ module NotesHelper
   def pin(note)
     btn_text = note.pinned? ? "pinned" : "pin"
 
-    button_to btn_text, note, method: :patch, :class => 'btn btn-warning'
+    button_to btn_text, toggle_pinned_note_path(note), method: :patch, :class => 'btn btn-outline-warning pin-btn', :remote => true
   end
 
   def date(note)
