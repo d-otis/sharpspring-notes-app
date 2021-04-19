@@ -44,13 +44,6 @@ class NotesController < ApplicationController
     # WORKS
     @note.toggle!(:pinned)
     redirect_to "/dashboard"
-
-    # figure out why eventListener doubles after every click
-    # respond_to do |format|
-    #   if @note.toggle!(:pinned)
-    #     format.js
-    #   end
-    # end
   end
 
   def destroy
