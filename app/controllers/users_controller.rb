@@ -26,6 +26,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    redirect_to "/login" unless logged_in?
   end
 
   def update
