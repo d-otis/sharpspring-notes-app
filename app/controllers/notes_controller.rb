@@ -55,6 +55,7 @@ class NotesController < ApplicationController
 
   def destroy
     @note.destroy
+    flash[:message] = ["You have deleted '#{@note.title}'"]
     redirect_to root_path
   end
 
