@@ -4,7 +4,7 @@ class NotesController < ApplicationController
   before_action :require_auth, except: [:new, :create, :index]
 
   def index
-    @notes = Note.where(user: current_user).order(:pinned => :desc)
+    redirect_to "/dashboard"
   end
 
   def show
