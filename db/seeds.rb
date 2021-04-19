@@ -24,6 +24,14 @@ num_users.times do
   )
 end
 
+test_user = User.create(
+  :first_name => "Patsy",
+  :last_name => "Cline",
+  :email => patsy.cline@gmail.com,
+  :password => "1234"
+  :password_confirmation => "1234"
+)
+
 puts "Generated #{User.all.count} users."
 
 User.all.each do |user|
