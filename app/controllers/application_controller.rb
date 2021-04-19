@@ -14,6 +14,9 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    redirect_to("/login", message: "Please login or register to see your notes!") unless logged_in?
+    if !logged_in?
+      flash[:message] = ["Please login!"]
+      redirect_to "/login"
+    end
   end
 end
