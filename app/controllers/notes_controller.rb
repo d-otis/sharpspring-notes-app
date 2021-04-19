@@ -20,12 +20,12 @@ class NotesController < ApplicationController
     if @note.save
       redirect_to note_path(@note)
     else
-      render :new, message: "There was an error."
+      flash[:message] = @note.errors.full_messages
+      redirect_to new_note_path
     end
   end
 
   def edit
-    
   end
 
   def update
@@ -35,7 +35,8 @@ class NotesController < ApplicationController
       flash[:message] = ["Note successfully updated!"]
       redirect_to note_path(@note)
     else
-      render :edit, message: "There was an error updating your note."
+      flash[:message] = @note.errors.full_messages
+      redirect_to edit_note_path(@note)
     end
   end
 
@@ -68,7 +69,10 @@ class NotesController < ApplicationController
   end
 
   def require_auth
-    redirect_to user_path(current_user), message: "You do not own this note." unless @note.user == current_user
+    if @note.user != current_user
+      flash[:message] = ["You do not own this note."]
+      redirect_to "/dashboard"
+    end
   end
 
 end
