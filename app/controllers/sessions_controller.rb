@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
       redirect_to "/dashboard"
     else
-      flash[:notice] = "Error logging in" if @user.nil?
+      flash[:message] = ["Error logging in"] if @user.nil?
       render :new
     end
   end
