@@ -26,6 +26,6 @@ module NotesHelper
   end
 
   def pin_icon(note)
-    content_tag :i, nil, :class => "fas fa-thumbtack" if note.pinned?
+    content_tag :i, nil, :class => "fas fa-thumbtack fa-lg" if note.pinned?
   end
 end
