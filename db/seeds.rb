@@ -11,47 +11,30 @@ Note.destroy_all
 Category.destroy_all
 NoteCategory.destroy_all
 
-merle = User.create(
-  :first_name => "Merle",
-  :last_name => "Haggard",
-  :email => "frommuskogee@gmail.com",
-  :password => '1234',
-  :password_confirmation => '1234'
-)
+num_users = 3
+num_notes_per_user = 15
 
-tammy = User.create(
-  :first_name => "Tammy",
-  :last_name => "Wynette",
-  :email => "divorce@gmail.com",
-  :password => '4567',
-  :password_confirmation => '4567'
-)
+num_users.times do
+  User.create(
+    :first_name => Faker::Name.first_name,
+    :last_name => Faker::Name.last_name,
+    :email => Faker::Internet.email,
+    :password => '1234',
+    :password_confirmation => '1234'
+  )
+end
 
-Category.create([
-  {
-    name: "Work"
-  },
-  {
-    name: "Personal"
-  }
-]
-)
+puts "Generated #{User.all.count} users."
 
-Note.create([
-  {
-    title: "Groceries",
-    body: "Euismod Tristique Fermentum Sem Justo",
-    user: merle
-  },
-  {
-    title: "Ideas for Essays",
-    body: "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Cras mattis consectetur purus sit amet fermentum.",
-    user: tammy
-  },
-  {
-    title: "Easy A",
-    body: "estibulum id ligula porta felis euismod semper. ",
-    user: tammy
-  }
-]
-)
+User.all.each do |user|
+  num_notes_per_user.times do
+    Note.create(
+      :title => Faker::Lorem.sentence,
+      :body => Faker::Lorem.paragraph,
+      :pinned => Faker::Boolean.boolean,
+      :user => user
+    )
+  end
+end
+
+puts "Generated #{Note.all.count} notes."
