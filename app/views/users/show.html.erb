@@ -16,18 +16,28 @@
 
  <%= link_to "Create New Note", new_note_path, :class => 'btn btn-outline-secondary'  %>
 
-    <table class="table mt-4">
-      <thead>
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Meta</th>
-          <th scope="col">View</th>
-          <th scope="col">Pin</th>
-          <th scope="col">Edit</th>
-          <th scope="col">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render(partial: 'notes/note', collection: @user.notes) || "No notes yet!" %>
-      </tbody>
-    </table>
+<% if @user.notes.any? %>
+
+  <table class="table mt-4">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Meta</th>
+        <th scope="col">View</th>
+        <th scope="col">Pin</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render(partial: 'notes/note', collection: @user.notes) || "No notes yet!" %>
+    </tbody>
+  </table>
+
+<% else %>
+
+  <div class="alert alert-warning mt-5 text-center">
+    No Notes Yet
+  </div>
+
+<% end %>
