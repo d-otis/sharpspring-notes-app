@@ -18,6 +18,7 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
 
     if @note.save
+      NoteMailer.with(user: current_user).note_email.deliver_now
       redirect_to note_path(@note)
     else
       flash[:message] = @note.errors.full_messages
