@@ -22,6 +22,7 @@ Live Deployment on Heroku @ https://floating-inlet-10981.herokuapp.com/
 * `Note` `body` cannot be longer than 1000 characters
 * If `Note` lacks `title`, one is generated from `body`, but note cannot be created with blank fields for both `title` and `body`
 * RSpecs for models and their validations as well as starting points for the continuation of spec development with controllers and features.
+* Action Mailer sends email to `User` upon `Note` creation
 
 ## Non-functional Requirements
 
