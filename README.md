@@ -50,3 +50,4 @@ Live Deployment on Heroku @ https://floating-inlet-10981.herokuapp.com/
 2. A `Category` model with association to `Note`: either a `has_one` `Category` or `belongs_to` `Category`/ies
 3. I experimented a bit with using Rails' ajax features to update the `pinned` boolean status of Notes on the `/dashboard` notes list--I'd definitely be interested in getting this working to avoid redirects/refreshes.
 4. Validation logic that doesn't require a user to set a new password if they're updating name or email address.
+5. Fix the buggy pin feature that doesn't always stick pinned notes to the top of the list.
