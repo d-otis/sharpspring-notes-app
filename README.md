@@ -39,13 +39,13 @@ Live Deployment on Heroku @ https://floating-inlet-10981.herokuapp.com/
 ## Challenges
 
 1. I did spend a fair amount of time in the beginning meticulously following TDD practices, but after a while, it was clear that I needed to shift gears and work a bit faster with the given timeline and certain goals I wanted to reach in addition to the prompted acceptance criteria.
-2. I got into the weeds a bit writing tests for user features, like logging in/sessions etc--so that is an area that I'd like to explore as I was able to flesh out that test coverage as much as I would have liked.
+2. I got into the weeds a bit writing tests for user features once I layered sessions into the project--so that is an area that I'd like to explore as I wasn't able to flesh out that test coverage as much as I would have liked.
 3. This was the first time I'd worked with Action Mailer and was very pleased with the DX. My only headaches came from properly configuring and authorizing the use of a burner Gmail account from which to send emails. Google understandably creates a lot of friction if you're trying to automate their email services.
-4. I butted heads with `flash` messages a bit. I've found varying results with using `render` vs `redirect_to` in controller actions in conjunction with successful sending and display of `flash` messages to views. At the end of the day I'd like them to be `render` calls so that work wouldn't be lost on validation failure which happens with using `redirect_to`. I've had success using `render` in previous projects and was even comparing these code bases. Ultimately I felt after a certain point my time was better spent elsewhere, but I would like to nail that at some point.
+4. I butted heads with `flash` messages a bit. I've found varying results with using `render` vs `redirect_to` in controller actions in conjunction with successful sending and display of `flash` messages to views. At the end of the day I'd like them to be `render` calls so that a user's work wouldn't be lost on validation failure which happens with using `redirect_to`. I've had success using `render` in previous projects and was even comparing these code bases. Ultimately I felt after a certain point my time was better spent elsewhere, but I would like to nail that given more time.
 
 ## Stretch Goals
 
 1. JavaScript-based live character count for note textarea field and title fields.
-2. A `Category` model that a `Note` uses either a `has_one` `Category` or `belongs_to` `Category`/ies
-3. I experimented a bit with using Rails' ajax features to update the `pinned` boolean status of Notes--I'd definitely be interested in getting this working to avoid redirects/refreshes.
+2. A `Category` model with association to `Note`: either a `has_one` `Category` or `belongs_to` `Category`/ies
+3. I experimented a bit with using Rails' ajax features to update the `pinned` boolean status of Notes on the `/dashboard` notes list--I'd definitely be interested in getting this working to avoid redirects/refreshes.
 4. Validation logic that doesn't require a user to set a new password if they're updating name or email address.
